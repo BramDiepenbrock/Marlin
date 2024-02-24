@@ -57,6 +57,8 @@
 #define X_STOP_PIN                          PC0   // X-STOP
 #define Y_STOP_PIN                          PC1   // Y-STOP
 #define Z_STOP_PIN                          PC2   // Z-STOP
+#define I_STOP_PIN                          PC15  // I-Stop Bram
+
 
 //
 // Z Probe must be this pin
@@ -73,9 +75,9 @@
 //
 // Filament Runout Sensor
 //
-#ifndef FIL_RUNOUT_PIN
-  #define FIL_RUNOUT_PIN                    PC15  // E0-STOP
-#endif
+// #ifndef FIL_RUNOUT_PIN
+  // #define FIL_RUNOUT_PIN                    PC15  // E0-STOP disabled E0 stop Bram
+// #endif
 
 //
 // Power-loss Detection
@@ -103,9 +105,13 @@
 #define Z_STEP_PIN                          PB0
 #define Z_DIR_PIN                           PC5
 
-#define E0_ENABLE_PIN                       PD1
-#define E0_STEP_PIN                         PB3
-#define E0_DIR_PIN                          PB4
+#define I_ENABLE_PIN                        PD1
+#define I_STEP_PIN                          PB3
+#define I_DIR_PIN                           PB4
+
+// #define E0_ENABLE_PIN                       PD1
+// #define E0_STEP_PIN                         PB3
+// #define E0_DIR_PIN                          PB4
 
 #if HAS_TMC_UART
   /**
@@ -115,7 +121,8 @@
   #define X_HARDWARE_SERIAL  MSerial4
   #define Y_HARDWARE_SERIAL  MSerial4
   #define Z_HARDWARE_SERIAL  MSerial4
-  #define E0_HARDWARE_SERIAL MSerial4
+  // #define E0_HARDWARE_SERIAL MSerial4
+  #define I_HARDWARE_SERIAL MSerial4
 
   // Default TMC slave addresses
   #ifndef X_SLAVE_ADDRESS
@@ -127,8 +134,10 @@
   #ifndef Z_SLAVE_ADDRESS
     #define Z_SLAVE_ADDRESS  1
   #endif
-  #ifndef E0_SLAVE_ADDRESS
-    #define E0_SLAVE_ADDRESS 3
+  // #ifndef E0_SLAVE_ADDRESS
+  //   #define E0_SLAVE_ADDRESS 3
+  #ifndef I_SLAVE_ADDRESS
+    #define I_SLAVE_ADDRESS 3
   #endif
 #endif
 
